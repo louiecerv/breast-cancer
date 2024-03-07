@@ -215,11 +215,7 @@ def display_form3():
     # save the clf to the session state
     st.session_state['clf'] = clf
 
-    submit3 = form3.form_submit_button("Reset")
-    if submit3:
-        st.session_state.reset_app = True
-        st.session_state.clear()
-        form3.write("If the form does not reset, click the reset button again.")
+st.button("Reset")
 
 if __name__ == "__main__":
     app()
