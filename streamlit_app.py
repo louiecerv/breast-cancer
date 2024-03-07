@@ -214,7 +214,9 @@ def display_form3():
 
     # save the clf to the session state
     st.session_state['clf'] = clf
-
+    submit3 = form3.form_submit_button("Reset")
+    if submit3:     
+        display_form1()
 st.button("Reset")
 
 if __name__ == "__main__":
