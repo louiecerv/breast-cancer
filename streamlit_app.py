@@ -3,9 +3,13 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns; sns.set()
-from sklearn import tree
-from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier
-from sklearn.datasets import load_iris
+from sklearn.datasets import load_breast_cancer
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.naive_bayes import GaussianNB
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
@@ -84,14 +88,14 @@ def display_form2():
 
     form2 = st.form("training")
     # Load the iris dataset
-    data = load_iris()
+    data = load_breast_cancer()
 
     # Convert data features to a DataFrame
     feature_names = data.feature_names
     df = pd.DataFrame(data.data, columns=feature_names)
     df['target'] = data.target
     
-    form2.write('The iris dataset')
+    form2.write('The breast cancer dataset')
     form2.write(df)
 
     # Separate features and target variable
@@ -108,76 +112,13 @@ def display_form2():
     st.session_state['y_train'] = y_train
     st.session_state['y_test'] = y_test
 
-    form2.text('Interesting characteristics:')
-    text = """One species (Setosa) is easily distinguishable from the others 
-    based on its sepal measurements. The other two species (Versicolor and Virginica) 
-    have some overlap in their measurements, making them more challenging to 
-    distinguish solely based on two features. Overall, the Iris dataset, despite its 
-    simplicity, offers a valuable resource for understanding and practicing 
-    fundamental machine learning concepts."""
-    form2.write(text)
-
     form2.subheader('Browse the Dataset') 
     form2.write(df)
 
     form2.subheader('Dataset Description')
     form2.write(df.describe().T)
 
-    # Create a figure and an axis
-    fig, ax = plt.subplots(figsize=(6, 6))
-
-    # Create a scatter plot with color based on species
-    sns.scatterplot(
-        x="sepal width (cm)",
-        y="sepal length (cm)",
-        hue="target",
-        palette="deep",
-        data=df,
-        ax=ax,
-    )
-
-    # Add labels and title
-    ax.set_xlabel("Sepal Width (cm)")
-    ax.set_ylabel("Sepal Length (cm)")
-    ax.set_title("Sepal Width vs. Sepal Length by Iris Species")
-
-    # Add legend
-    plt.legend(title="Species")
-
-    # Show the plot
-    form2.pyplot(fig)
-
-    text = """One species (Setosa) is easily distinguishable 
-    from the others based on its sepal measurements"""
-    form2.write(text)
-
-    # Create a figure and an axis
-    fig, ax = plt.subplots(figsize=(6, 6))
-
-    # Create a scatter plot with color based on species
-    sns.scatterplot(
-        x="petal width (cm)",
-        y="petal length (cm)",
-        hue="target",
-        palette="bright",
-        data=df,
-        ax=ax,
-    )
-
-    # Add labels and title
-    ax.set_xlabel("Petal Width (cm)")
-    ax.set_ylabel("Petal Length (cm)")
-    ax.set_title("Petal Width vs. Petal Length by Iris Species")
-
-    # Add legend
-    plt.legend(title="Species")
-
-    # Show the plot
-    form2.pyplot(fig)
-
-    text = """The clusters show the distint species based on 
-    their petal measurements"""
-    form2.write(text)
+    #insert plots here
 
     form2.subheader('Select the classifier')
 
