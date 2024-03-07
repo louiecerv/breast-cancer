@@ -63,7 +63,7 @@ def display_form1():
     West Visayas State University"""
     form1.text(text)
 
-    form1.subheader('Breast Cancer Diagnosis')
+    form1.subheader('Breast Cancer Diagnosis Support Using ML Classifiers')
     form1.image('breast-cancer.jpg', caption="The Breast Cancer Dataset in Sci-kit Learn", use_column_width=True)
     text = """The breast cancer dataset in scikit-learn is a well-known dataset used for binary 
         classification tasks. It contains data collected from patients diagnosed with breast cancer. 
