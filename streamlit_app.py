@@ -118,7 +118,19 @@ def display_form2():
     form2.subheader('Dataset Description')
     form2.write(df.describe().T)
 
-    #insert plots here
+    fig, ax = plt.subplots()
+    sns.countplot(x="target", data=df, ax=ax)
+
+    fig, axs = plt.subplots(nrows=2, ncols=2)  # Adjust layout as needed
+    sns.pairplot(df[data.feature_names[:4]], hue="target", ax=axs)  # Adjust feature subset
+
+    fig, ax = plt.subplots()
+    sns.displot(df["mean area"], hue="target", kind="kde", ax=ax)
+
+    fig, ax = plt.subplots()
+    sns.heatmap(df.corr(), ax=ax)
+
+    form2.pyplot(fig)
 
     form2.subheader('Select the classifier')
 
@@ -183,7 +195,7 @@ def display_form3():
         exceeding 90%, demonstrating its ability to effectively 
         classify malignant and benign tumors."""
         classifier = "Naive Bayes"
-        
+
     form3.subheader('Performance of the ' + classifier)
 
     X_train = st.session_state['X_train']
