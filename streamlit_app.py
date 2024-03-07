@@ -153,31 +153,37 @@ def display_form3():
     form3 = st.form("Result")
     classifier = ''
     if st.session_state['selected_model'] == 0:     # decision tree
-        text = """Achieves good accuracy, but can be prone to 
-        overfitting, leading to lower performance on unseen data.
-        Simple and interpretable, allowing visualization of decision rules.
-        Susceptible to changes in the training data, potentially 
-        leading to high variance in predictions."""
+        text = """Logistic regression generally performs well on the breast 
+        cancer dataset in scikit-learn, achieving high accuracy scores 
+        (often exceeding 95%) in various studies and implementations. 
+        This indicates the model's effectiveness in distinguishing 
+        between malignant and benign tumors based on the provided features."""
         classifier = 'Logistic Regression'
-    elif st.session_state['selected_model'] == 1:   # Random Forest
-        text = """Generally outperforms a single decision tree, 
-        reaching accuracy close to 98%. Reduces overfitting through 
-        averaging predictions from multiple trees. Ensemble method - 
-        combines predictions from multiple decision trees, leading to 
-        improved generalization and reduced variance. Less interpretable 
-        compared to a single decision tree due to the complex 
-        ensemble structure."""
-        classifier = 'Random Forest'
-    else:   # Extreme Random Forest
-        text = """Performance: Can achieve similar or slightly better 
-        accuracy compared to a random forest, but results can vary 
-        depending on hyperparameter tuning. Introduces additional randomness 
-        during tree building by randomly selecting features at each split.  Aims to 
-        further improve generalization and reduce overfitting by increasing 
-        the diversity of trees in the ensemble. Requires careful 
-        hyperparameter tuning to achieve optimal performance."""
-        classifier = "Extreme Random Forest"
-
+    elif st.session_state['selected_model'] == 1:   
+        text = """Support vector machines (SVMs) also demonstrate strong
+        performance on the breast cancer dataset in scikit-learn. 
+        They often achieve accuracy scores comparable or exceeding 95%, 
+        showcasing their capability to effectively separate malignant and 
+        benign tumors based on the given features."""
+        classifier = 'Support Vector Machine'
+    elif st.session_state['selected_model'] == 2:   
+        text = """The performance of KNN on the breast cancer dataset in 
+        scikit-learn is generally positive, achieving decent accuracy 
+        scores (often around 90% or higher). However, it's important to
+        understand some nuances: Performance is sensitive to the "k"
+        parameter: This parameter determines the number of nearest 
+        neighbors considered for classification. Choosing the optimal 
+        "k" value requires careful tuning as both too high and too 
+        low values can negatively impact accuracy."""
+        classifier = "K-Nearest Neighbor"
+    else:
+        text = """Similar to logistic regression, Naive Bayes also exhibits
+        good performance on the breast cancer dataset in scikit-learn. 
+        Studies and implementations often report accuracy scores 
+        exceeding 90%, demonstrating its ability to effectively 
+        classify malignant and benign tumors."""
+        classifier = "Naive Bayes"
+        
     form3.subheader('Performance of the ' + classifier)
 
     X_train = st.session_state['X_train']
