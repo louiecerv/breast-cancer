@@ -122,23 +122,6 @@ def display_form2():
     sns.countplot(x="target", data=df, ax=ax)
     form2.pyplot(fig)
 
-    # Number of features to visualize in pairplot (adjust as needed)
-    num_features = 4
-
-    # Create figure and subplots
-    fig, axs = plt.subplots(nrows=int((num_features - 1) / 2) + 1, ncols=2)
-
-    # Pairplot using a loop (adjust slice for desired features)
-    for i in range(num_features):
-        for j in range(i + 1, num_features):
-            sns.kdeplot(df[data.feature_names[i]], df[data.feature_names[j]], hue="target", ax=axs[int(i // 2), i % 2])
-
-    form2.pyplot(fig)
-
-    fig, ax = plt.subplots()
-    sns.displot(df["mean area"], hue="target", kind="kde", ax=ax)
-    form2.pyplot(fig)
-
     fig, ax = plt.subplots()
     sns.heatmap(df.corr(), ax=ax)
     form2.pyplot(fig)
