@@ -126,7 +126,7 @@ def display_form2():
     plt.xlabel("Target")
     plt.ylabel("Number of Samples")
     plt.title("Distribution of Target Classes in Breast Cancer Dataset")
-    plt.xticks([0, 1], labels=cancer_data.target_names)  # Use informative labels for target classes
+    plt.xticks([0, 1], labels=data.target_names)  # Use informative labels for target classes
     plt.grid(axis='y', linestyle='--', alpha=0.7)  # Add subtle grid lines
 
     # Display the plot
