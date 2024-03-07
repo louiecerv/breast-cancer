@@ -158,7 +158,7 @@ def display_form3():
         Simple and interpretable, allowing visualization of decision rules.
         Susceptible to changes in the training data, potentially 
         leading to high variance in predictions."""
-        classifier = 'Decision Tree'
+        classifier = 'Logistic Regression'
     elif st.session_state['selected_model'] == 1:   # Random Forest
         text = """Generally outperforms a single decision tree, 
         reaching accuracy close to 98%. Reduces overfitting through 
