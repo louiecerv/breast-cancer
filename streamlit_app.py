@@ -15,7 +15,7 @@ def app():
     if "reset_app" not in st.session_state:
         st.session_state.reset_app = False
 
-    text = """ Logistic Regression, Decision Tree, SVM, KNN and Naive Bayes on the breast cancer dataset"""
+    text = """ Logistic Regression, Decision Tree, SVM, KNN and Naive Bayes on the Breast Cancer Dataset"""
     st.subheader(text)
 
     # Use session state to track the current form
@@ -59,30 +59,20 @@ def display_form1():
     West Visayas State University"""
     form1.text(text)
 
-    form1.header('Description')
+    form1.subheader('Breast Cancer Diagnosis')
     form1.image('breast-cancer.jpg', caption="The Breast Cancer Dataset in Sci-kit Learn", use_column_width=True)
-    text = """The iris is a beautiful and diverse flowering plant genus, 
-    boasting over 310 recognized species. These plants are known for their 
-    stunning blooms, which come in a wide range of colors, including purple, 
-    blue, yellow, white, and even black."""
-    form1.write(text)
-    form1.subheader('The Iris Dataset')
-    text = """The Iris dataset is a well-known and widely used dataset in the field
-    of machine learning. Here's a breakdown of its key aspects:"""
-    form1.write(text)
-    text = """Data points: 150, representing 50 samples from each of three Iris species: 
-    Iris setosa, Iris versicolor, and Iris virginica.
-    \nFeatures: Four measurements for each flower (in centimeters): Sepal length, 
-    Sepal width, Petal length, Petal width)
-    \nTarget variable: The species of the Iris flower (Setosa, Versicolor, or Virginica)."""
-    form1.write(text)
-    form1.write('Applications:')
-    text = """Commonly used to introduce and test various machine learning algorithms, 
-    especially for: Classification (predicting the flower species based on the
-    measurements) Visualization (exploring relationships between features and species)"""
+    text = """The breast cancer dataset in scikit-learn is a well-known dataset used for binary 
+        classification tasks. It contains data collected from patients diagnosed with breast cancer. 
+        Here's a breakdown of the dataset:
+        \nSource: The data consists of features extracted from digitized images of fine needle 
+        aspirates (FNA) of breast masses.
+        \nFeatures: The dataset includes 569 data points, each with 30 numerical features. 
+        These features represent various characteristics of the cell nuclei, such as radius, 
+        texture, perimeter, and area.
+        \nTarget: The target variable indicates the class, whether the tumor is malignant 
+        (cancerous) or benign (non-cancerous). There are 212 malignant cases and 357 benign cases."""
     form1.write(text)
   
-
     submit1 = form1.form_submit_button("Start")
 
     if submit1:
