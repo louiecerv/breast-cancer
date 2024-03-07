@@ -95,9 +95,6 @@ def display_form2():
     df = pd.DataFrame(data.data, columns=feature_names)
     df['target'] = data.target
     
-    form2.write('The breast cancer dataset')
-    form2.write(df)
-
     # Separate features and target variable
     X = df.drop('target', axis=1)  # Target variable column name
     y = df['target']
