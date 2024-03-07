@@ -138,7 +138,7 @@ def display_form2():
         clf = GaussianNB()
         st.session_state['selected_model'] = 3
     else:
-        clf = tree.DecisionTreeClassifier()
+        clf = LogisticRegression(random_state=42)
         st.session_state['selected_model'] = 0
 
     # save the clf to the session variable
