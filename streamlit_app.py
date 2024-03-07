@@ -131,7 +131,7 @@ def display_form2():
 
     # Display the plot
     plt.tight_layout()
-    form2.pylot(fig)
+    form2.pyplot(fig)
 
 
     fig, ax = plt.subplots()
