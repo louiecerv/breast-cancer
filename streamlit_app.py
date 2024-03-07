@@ -128,7 +128,7 @@ def display_form2():
     st.session_state['selected_model'] = 0
     options = ['Logistic Regression', 'Support Vector Machine', 'K-Nearest Neighbor', 'Naive Bayes']
     selected_option = form2.selectbox('Select the classifier', options)
-    elif selected_option=='Support Vector Machine':        
+    if selected_option=='Support Vector Machine':        
         clf = SVC(kernel='linear', random_state=42)
         st.session_state['selected_model'] = 1
     elif selected_option=='K-Nearest Neighbor':        
