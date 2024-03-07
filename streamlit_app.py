@@ -217,7 +217,8 @@ def display_form3():
     submit3 = form3.form_submit_button("Reset")
     if submit3:     
         display_form1()
-st.button("Reset")
+    
+    st.button("Reset App")
 
 if __name__ == "__main__":
     app()
