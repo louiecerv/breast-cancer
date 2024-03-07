@@ -120,7 +120,7 @@ def display_form2():
 
     # Create the plot using seaborn.countplot
     fig, ax = plt.subplots(figsize=(6, 6))  # Set appropriate figure size
-    sns.countplot(x="target", data=df, ax=ax, hue="target", palette="Set3")  # Plot with color encoding
+    sns.countplot(x="target", data=df, ax=ax, hue="target", palette="bright")  # Plot with color encoding
 
     # Customize the plot for clarity and aesthetics
     plt.xlabel("Target")
