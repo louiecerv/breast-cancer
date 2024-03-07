@@ -122,10 +122,13 @@ def display_form2():
     sns.countplot(x="target", data=df, ax=ax)
     form2.pyplot(fig)
 
-    fig, axs = plt.subplots(nrows=2, ncols=2)  # Adjust layout as needed
-    sns.pairplot(df[data.feature_names[:4]], hue="target", ax=axs)  # Adjust feature subset
+    # Subplots for pairplot (adjust layout as needed)
+    fig, axs = plt.subplots(figsize=(10, 6))  # Adjust figure size for better visualization
+
+    # Create pairplot on subplots (using reshape for compatibility)
+    sns.pairplot(df[data.feature_names[:4]].reset_index(drop=True), hue="target", ax=axs.reshape(-1))  # Adjust feature subset
     form2.pyplot(fig)
-    
+
     fig, ax = plt.subplots()
     sns.displot(df["mean area"], hue="target", kind="kde", ax=ax)
     form2.pyplot(fig)
