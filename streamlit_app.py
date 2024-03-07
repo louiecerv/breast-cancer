@@ -123,6 +123,11 @@ def display_form2():
     form2.pyplot(fig)
 
     fig, ax = plt.subplots()
+    # Create a pairplot of all features
+    sns.pairplot(df, hue="target", diag_kind="hist")
+    form2.pyplot(fig)
+    
+    fig, ax = plt.subplots()
     sns.heatmap(df.corr(), ax=ax)
     form2.pyplot(fig)
 
