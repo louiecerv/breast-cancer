@@ -118,15 +118,22 @@ def display_form2():
     form2.subheader('Dataset Description')
     form2.write(df.describe().T)
 
-    fig, ax = plt.subplots()
-    sns.countplot(x="target", data=df, ax=ax)
-    form2.pyplot(fig)
+    # Create the plot using seaborn.countplot
+    fig, ax = plt.subplots(figsize=(6, 6))  # Set appropriate figure size
+    sns.countplot(x="target", data=df, ax=ax, hue="target", palette="Set3")  # Plot with color encoding
 
-    fig, ax = plt.subplots()
-    # Create a pairplot of all features
-    sns.pairplot(df, hue="target", diag_kind="hist")
-    form2.pyplot(fig)
-    
+    # Customize the plot for clarity and aesthetics
+    plt.xlabel("Target")
+    plt.ylabel("Number of Samples")
+    plt.title("Distribution of Target Classes in Breast Cancer Dataset")
+    plt.xticks([0, 1], labels=cancer_data.target_names)  # Use informative labels for target classes
+    plt.grid(axis='y', linestyle='--', alpha=0.7)  # Add subtle grid lines
+
+    # Display the plot
+    plt.tight_layout()
+    form2.pylot(fig)
+
+
     fig, ax = plt.subplots()
     sns.heatmap(df.corr(), ax=ax)
     form2.pyplot(fig)
