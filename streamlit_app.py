@@ -120,17 +120,20 @@ def display_form2():
 
     fig, ax = plt.subplots()
     sns.countplot(x="target", data=df, ax=ax)
+    form2.pyplot(fig)
 
     fig, axs = plt.subplots(nrows=2, ncols=2)  # Adjust layout as needed
     sns.pairplot(df[data.feature_names[:4]], hue="target", ax=axs)  # Adjust feature subset
-
+    form2.pyplot(fig)
+    
     fig, ax = plt.subplots()
     sns.displot(df["mean area"], hue="target", kind="kde", ax=ax)
+    form2.pyplot(fig)
 
     fig, ax = plt.subplots()
     sns.heatmap(df.corr(), ax=ax)
-
     form2.pyplot(fig)
+
 
     form2.subheader('Select the classifier')
 
