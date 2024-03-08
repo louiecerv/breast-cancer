@@ -173,7 +173,7 @@ def display_form3():
         between malignant and benign tumors based on the provided features."""
         classifier = 'Logistic Regression'
     elif st.session_state['selected_model'] == 1:   
-        report = """Support vector machines (SVMs) also demonstrate strong
+        report = """Support vector machines (SVMs) demonstrate strong
         performance on the breast cancer dataset in scikit-learn. 
         They often achieve accuracy scores comparable or exceeding 95%, 
         showcasing their capability to effectively separate malignant and 
@@ -232,7 +232,7 @@ def display_form3():
     form3.subheader('Performance Metrics')
     form3.text(classification_report(y_test, y_test_pred))
     form3.write(report)
-    
+
     # save the clf to the session state
     st.session_state['clf'] = clf
     submit3 = form3.form_submit_button("Reset")
