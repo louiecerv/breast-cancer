@@ -208,11 +208,10 @@ def display_form3():
     clf.fit(X_train, y_train)
     y_test_pred = clf.predict(X_test)
 
-    cm = confusion_matrix(y_test, y_test_pred)
-    form3.text(cm)
-
     form3.subheader('Confusion Matrix')
-    test = """This is a table with two rows and two columns, representing the actual classes (benign/malignant)
+    cm = confusion_matrix(y_test, y_test_pred)
+    form3.text(cm)    
+    text = """This is a table with two rows and two columns, representing the actual classes (benign/malignant)
         and the predicted classes by the model. The four values in the table represent:
         \nTrue Positive (TP): These are the samples where the model correctly predicted a malignant tumor.
         \nTrue Negative (TN): These are the samples where the model correctly predicted a benign tumor.
