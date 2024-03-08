@@ -166,21 +166,21 @@ def display_form3():
     form3 = st.form("Result")
     classifier = ''
     if st.session_state['selected_model'] == 0:     # decision tree
-        text = """Logistic regression generally performs well on the breast 
+        report = """Logistic regression generally performs well on the breast 
         cancer dataset in scikit-learn, achieving high accuracy scores 
         (often exceeding 95%) in various studies and implementations. 
         This indicates the model's effectiveness in distinguishing 
         between malignant and benign tumors based on the provided features."""
         classifier = 'Logistic Regression'
     elif st.session_state['selected_model'] == 1:   
-        text = """Support vector machines (SVMs) also demonstrate strong
+        report = """Support vector machines (SVMs) also demonstrate strong
         performance on the breast cancer dataset in scikit-learn. 
         They often achieve accuracy scores comparable or exceeding 95%, 
         showcasing their capability to effectively separate malignant and 
         benign tumors based on the given features."""
         classifier = 'Support Vector Machine'
     elif st.session_state['selected_model'] == 2:   
-        text = """The performance of KNN on the breast cancer dataset in 
+        report = """The performance of KNN on the breast cancer dataset in 
         scikit-learn is generally positive, achieving decent accuracy 
         scores (often around 90% or higher). However, it's important to
         understand some nuances: Performance is sensitive to the "k"
@@ -190,7 +190,7 @@ def display_form3():
         low values can negatively impact accuracy."""
         classifier = "K-Nearest Neighbor"
     else:
-        text = """Similar to logistic regression, Naive Bayes also exhibits
+        report = """Similar to logistic regression, Naive Bayes also exhibits
         good performance on the breast cancer dataset in scikit-learn. 
         Studies and implementations often report accuracy scores 
         exceeding 90%, demonstrating its ability to effectively 
@@ -231,9 +231,8 @@ def display_form3():
 
     form3.subheader('Performance Metrics')
     form3.text(classification_report(y_test, y_test_pred))
-
-    form3.write(text)
-
+    form3.write(report)
+    
     # save the clf to the session state
     st.session_state['clf'] = clf
     submit3 = form3.form_submit_button("Reset")
