@@ -130,16 +130,13 @@ def display_form2():
     plt.tight_layout()
     form2.pyplot(fig)
 
-
     fig, ax = plt.subplots()
     sns.heatmap(df.corr(), ax=ax)
     form2.pyplot(fig)
 
-
     form2.subheader('Select the classifier')
 
     # Create the selecton of classifier
-
     clf = LogisticRegression(random_state=42)
     st.session_state['selected_model'] = 0
     options = ['Logistic Regression', 'Support Vector Machine', 'K-Nearest Neighbor', 'Naive Bayes']
@@ -211,10 +208,27 @@ def display_form3():
     clf.fit(X_train, y_train)
     y_test_pred = clf.predict(X_test)
 
-    form3.subheader('Confusion Matrix')
-    form3.write('Confusion Matrix')
     cm = confusion_matrix(y_test, y_test_pred)
     form3.text(cm)
+
+    form3.subheader('Confusion Matrix')
+    test = """This is a table with two rows and two columns, representing the actual classes (benign/malignant)
+        and the predicted classes by the model. The four values in the table represent:
+        \nTrue Positive (TP): These are the samples where the model correctly predicted a malignant tumor.
+        \nTrue Negative (TN): These are the samples where the model correctly predicted a benign tumor.
+        \nFalse Positive (FP): These are the benign tumors incorrectly classified as malignant by the model 
+        (Type I error). This can be a critical error in cancer diagnosis.
+        \nFalse Negative (FN): These are the malignant tumors incorrectly classified as benign by the model 
+        (Type II error). This is an even more critical error as it can lead to delayed or missed treatment.
+        \nBy analyzing the confusion matrix, you can gain insights beyond just accuracy. You can identify:
+        \nOverall Performance: The diagonal (TP and TN) represents correct predictions, indicating the 
+        model's general ability to classify tumors.
+        \nClass Imbalance: If there's a significant difference between the number of benign and malignant 
+        tumors, the confusion matrix can reveal any bias towards the majority class.
+        \nFocus Areas: Depending on the application, you might prioritize minimizing either False Positives 
+        or False Negatives. The confusion matrix helps you identify which type of error your model 
+        struggles with more."""
+    form3.write(text)
 
     form3.subheader('Performance Metrics')
     form3.text(classification_report(y_test, y_test_pred))
